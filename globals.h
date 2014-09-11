@@ -110,6 +110,7 @@ WHERE char *PostIndentString;
 WHERE char *Postponed;
 WHERE char *Prefix;
 WHERE char *PrintCmd;
+WHERE char *NewCmd;
 WHERE char *QueryCmd;
 WHERE char *QueryFormat;
 WHERE char *Realname;

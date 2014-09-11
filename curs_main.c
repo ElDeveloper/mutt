@@ -575,6 +575,16 @@ int mutt_index_menu (void)
 	  mutt_message _("New mail in this mailbox.");
 	  if (option (OPTBEEPNEW))
 	    beep ();
+      if (NewCmd)
+      {
+        // 20 is the maximum number of exceeding characters after formatting
+        // and 1 accounts for the NULL character which strlen doesn't consider
+        int n = strlen(NewCmd)+21;
+        char cmd[n];
+
+        snprintf(cmd, n, NewCmd, Context->new, Context->unread);
+        mutt_system(cmd);
+      }
 	} else if (check == M_FLAGS)
 	  mutt_message _("Mailbox was externally modified.");
 

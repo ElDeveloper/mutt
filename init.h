@@ -290,6 +290,13 @@ struct option_t MuttVars[] = {
   { "beep",		DT_BOOL, R_NONE, OPTBEEP, 1 },
   /*
   ** .pp
+  ** If \fIset\fP, Mutt will call this command after a new message is received.
+  ** Mutt two values are passed in number of new messages and number of unread
+  ** messages.
+  */
+  { "new_command",	DT_PATH, R_NONE, UL &NewCmd, UL NULL },
+  /*
+  ** .pp
   ** When this variable is \fIset\fP, mutt will beep when an error occurs.
   */
   { "beep_new",		DT_BOOL, R_NONE, OPTBEEPNEW, 0 },
