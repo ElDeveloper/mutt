@@ -607,7 +607,17 @@ int mutt_index_menu (void)
      if (do_buffy_notify)
      {
        if (mutt_buffy_notify () && option (OPTBEEPNEW))
- 	beep ();
+         beep ();
+       if (mutt_buffy_notify () && NewCmd)
+       {
+         // 20 is the maximum number of exceeding characters after formatting
+         // and 1 accounts for the NULL character which strlen doesn't consider
+         int n = strlen(NewCmd)+21;
+         char cmd[n];
+
+         snprintf(cmd, n, NewCmd, Context->new, Context->unread);
+         mutt_system(cmd);
+       }
      }
      else
        do_buffy_notify = 1;
