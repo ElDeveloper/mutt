@@ -291,8 +291,8 @@ struct option_t MuttVars[] = {
   /*
   ** .pp
   ** If \fIset\fP, Mutt will call this command after a new message is received.
-  ** Mutt two values are passed in number of new messages and number of unread
-  ** messages.
+  ** See the $$status_format documentation for the values that can be formatted
+  ** into this command.
   */
   { "new_command",	DT_PATH, R_NONE, UL &NewCmd, UL NULL },
   /*

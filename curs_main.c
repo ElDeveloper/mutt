@@ -577,12 +577,8 @@ int mutt_index_menu (void)
 	    beep ();
       if (NewCmd)
       {
-        // 20 is the maximum number of exceeding characters after formatting
-        // and 1 accounts for the NULL character which strlen doesn't consider
-        int n = strlen(NewCmd)+21;
-        char cmd[n];
-
-        snprintf(cmd, n, NewCmd, Context->new, Context->unread);
+        char cmd[LONG_STRING];
+        menu_status_line(cmd, sizeof(cmd), menu, NONULL(NewCmd));
         mutt_system(cmd);
       }
 	} else if (check == M_FLAGS)
@@ -612,12 +608,8 @@ int mutt_index_menu (void)
            beep ();
          if (NewCmd)
          {
-           // 20 is the maximum number of exceeding characters after formatting
-           // and 1 accounts for the NULL character which strlen doesn't consider
-           int n = strlen(NewCmd)+21;
-           char cmd[n];
-
-           snprintf(cmd, n, NewCmd, Context->new, Context->unread);
+           char cmd[LONG_STRING];
+           menu_status_line(cmd, sizeof(cmd), menu, NONULL(NewCmd));
            mutt_system(cmd);
          }
        }
